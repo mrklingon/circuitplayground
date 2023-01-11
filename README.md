@@ -20,6 +20,7 @@ archive of circuit python projects for adafruit circuitplayground
 * quickmorse.py - morse code
 * smile.py - generate smile or frown
 * starships.py - generate sf story randomly
+* startrek.py - demo program playing different Star Trek sounds
 * trans - translation table for diceTran.py
 * trek.py - star trek game
 * wacha2.py - nim game.
