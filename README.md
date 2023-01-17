@@ -6,6 +6,7 @@ archive of circuit python projects for adafruit circuitplayground
 * blinknum.py - support module to display numbers 
 * bounce.py - 
 * diceTran.py- diceware with alien words
+* dirship.py - data structure with deck of Enterprise-D
 * invaders.py - invaders game
 * kwords.py - Klingon diceware vocabulary
 * lca.py - linear cellular automata
@@ -14,6 +15,7 @@ archive of circuit python projects for adafruit circuitplayground
 * morse.py - morse code support module
 * mototest.py - robot test
 * mwords.py - mando'a diceware vocabulary
+* ncc1701d.py - navigate Enterprise D,with sound files or print to REPL
 * pycorder.py - tricorder with speech (needs .wav files)
 * qdata.py - data for twenty questions 
 * quests.py - twenty questions
