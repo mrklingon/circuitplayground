@@ -8,6 +8,7 @@ import board
 from blinknum import *
 from dirship import *
 
+picard = ["ST/makeitso.wav","ST/acknowledge.wav","ST/engage.wav","ST/Status report.wav"]
 def saydeck(deck):
     cp.play_file("ST/deck.wav")
     showint(deck)
@@ -17,6 +18,7 @@ def showroom(deck,room):
         cp.play_file("ST/holodeck.wav")
     if rm.find("bridge") >= 0:
         cp.play_file("ST/bridge.wav")
+        cp.play_file(random.choice(picard))
     if rm.find("anspor") >= 0:
         cp.play_file("ST/transporter.wav")
     if rm.find("uarter") >= 0:
@@ -89,7 +91,16 @@ while True:
             if room == len(rooms):
                 room = len(rooms) - 1
             showroom(deck,room)
-
+    if cp.touch_A4:        
+         cp.play_file("ST/tng_tricorder9.wav")
+         cp.play_file("ST/temp.wav")
+         saytemp()
+         
+    if cp.touch_A5:        
+         cp.play_file("ST/tng_tricorder9.wav")
+         cp.play_file("ST/light.wav")
+         saylight()     
+         
     time.sleep(.1)
                 
     
