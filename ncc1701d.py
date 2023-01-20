@@ -16,17 +16,25 @@ def showroom(deck,room):
     rm = entdir[deck][1][room]
     if rm.find("olod") >= 0:
         cp.play_file("ST/holodeck.wav")
+    if rm.find("argo") >= 0:
+        cp.play_file("ST/cargo.wav")
     if rm.find("bridge") >= 0:
         cp.play_file("ST/bridge.wav")
         cp.play_file(random.choice(picard))
     if rm.find("anspor") >= 0:
         cp.play_file("ST/transporter.wav")
+        cp.play_file("ST/Transporter Beam.wav")
     if rm.find("uarter") >= 0:
         cp.play_file("ST/quarters.wav")
+    if rm.find("ick") >= 0:
+        cp.play_file("ST/tng_tricorder9.wav")
+        cp.play_file("ST/sickbay.wav")
     if rm.find("orward") >= 0:
         cp.play_file("ST/tenforward.wav")
     if rm.find("lab") >= 0:
         cp.play_file("ST/lab.wav")
+        cp.play_file("ST/tng_tricorder9.wav")
+
     if rm.find("uttle") >= 0:
         cp.play_file("ST/shuttlebay.wav")
     print(rm)
