@@ -5,7 +5,7 @@ import board
 
 period = [24, 62, 100, 188]
 planets = ["Mercury", "Venus", "Earth", "Mars"]
-pix = [(255, 0, 0), (249,242,28), (0, 255, 0), (146, 0, 148)]
+pix = [(62, 0, 0), (64,60,7), (0, 62, 0), (36, 0, 37)]
 loc = [0, 0 ,0,0]
 counter = [0,0,0,0]
 def clearplanets(lcx):
