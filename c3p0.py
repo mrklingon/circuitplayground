@@ -2,7 +2,6 @@
 #
 # SPDX-License-Identifier: MIT
 
-# Circuit Playground HID Keyboard
 
 import time
 import random
@@ -10,7 +9,7 @@ import board
 
 from quotefile import *
 from adafruit_circuitplayground import cp
-
+from morse2 import *
 def prt(text):
     print(text)
         
@@ -23,22 +22,26 @@ alphabet = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 colors = []
 
 for x in range(55):
-    clr = (20+random.randrange(150),20+random.randrange(150),20+random.randrange(150))
+    clr = (20+random.randrange(100),20+random.randrange(100),20+random.randrange(100))
     colors.append(clr)
 colors[0]=(0,0,0)
 
 
 def doprint(msg):
     prt(msg)
-    for x in range(10):
-        cp.pixels[x]=(0,0,0)
-    for x in range(len(msg)):
-        indx = 0
-        if alphabet.find(msg[x])>-1:
-            indx = alphabet.find(msg[x])
-        cp.pixels[x%10] = colors[indx]
-        time.sleep(.1)
-    time.sleep(2)
+    if cp.switch:
+        for x in range(10):
+            cp.pixels[x]=(0,0,0)
+        for x in range(len(msg)):
+            indx = 0
+            if alphabet.find(msg[x])>-1:
+                indx = alphabet.find(msg[x])
+            cp.pixels[x%10] = colors[indx]
+            time.sleep(.1)
+        time.sleep(2)
+    else:
+        blinkcode(encryption(msg))
+              
     for x in range(10):
         cp.pixels[x]=(0,0,0)
 def doquote():
@@ -64,3 +67,4 @@ while not Done:
         doquote()	
 
     time.sleep(.2)
+
