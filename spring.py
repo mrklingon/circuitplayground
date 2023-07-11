@@ -2,6 +2,7 @@ from adafruit_circuitplayground import cp
 import time
 import random
 from blinknum import *
+import bach
 
 
 #Define colors
@@ -28,7 +29,7 @@ rainbow2 = [orange,yellow,green,blue,indigo,violet,red]
 def boom():
     for i in range(30):
         cp.pixels[loc(i)]=random.choice(palette)
-        
+    bach.compthink(1)
     time.sleep(.25)
     for i in range(10):
         cp.pixels[i] = blank
@@ -39,33 +40,34 @@ def loc(pos):
     pos = pos + 10
     return pos % 10
 
-rocket = 0
-star = 9
+rocket = 5
+star = 4
 target = 5
 cp.pixels[target]=random.choice(palette)
 while True:
     
     time.sleep(.25)
-    if random.randrange(10)>7:
-        cp.pixels[target]=blank
-        target = loc(target+(1-random.randrange(3)))
-        cp.pixels[target]=random.choice(palette)
-        time.sleep(.5)  
+    if cp.switch:
+        if random.randrange(10)>7:
+            cp.pixels[target]=blank
+            target = loc(target+(1-random.randrange(3)))
+            cp.pixels[target]=random.choice(palette)
+            time.sleep(.5)  
 
     spring = 0
     sspring = 0
-    if cp.button_a:
+    if cp.button_b:
         spring = spring + 1
         cp.pixels[rocket] = random.choice(rainbow)
-        while cp.button_a:
+        while cp.button_b:
             spring = spring + 1
             cp.pixels[rocket] = random.choice(rainbow)
             time.sleep(.1)
     cp.pixels[rocket] = blank
-    if cp.button_b:
+    if cp.button_a:
         sspring = sspring + 1
         cp.pixels[star] = random.choice(rainbow)
-        while cp.button_b:
+        while cp.button_a:
             sspring = sspring + 1
             cp.pixels[star] = random.choice(rainbow)
             time.sleep(.1)
@@ -74,19 +76,21 @@ while True:
         delay = .01
         for x in range(spring%17):
             rocket = loc(rocket+1)
-            if rocket == target:
+            if rocket == target and cp.switch:
                 boom()
             cp.pixels[rocket] = random.choice(rainbow)
             time.sleep(delay)
             delay = delay*1.4
             cp.pixels[rocket]= blank
+        rocket = 5
     if sspring > 0:
         delay = .01
         for x in range(sspring%17):
             star = loc(star-1)
-            if star == target:
+            if star == target and cp.switch:
                 boom()
             cp.pixels[star] = random.choice(rainbow)
             time.sleep(delay)
             delay = delay*1.4
             cp.pixels[star]= blank 
+        star=4
