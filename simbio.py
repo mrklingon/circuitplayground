@@ -2,6 +2,8 @@ from adafruit_circuitplayground import cp
 import time
 import random
 
+
+#misunderstanding of https://sci-hub.se/10.1007/BF01556771
 #Define colors
 pink = (20,5,5)
 gold = (25, 20, 5)
