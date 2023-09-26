@@ -1,7 +1,7 @@
 from adafruit_circuitplayground import cp
 import time
 import random
-#based on Baricelli's artificial life https://adventofcomputing.com/?guid=4f4a53d5-842a-4ae7-bf43-83fde5ea49b6
+
 #Define colors
 pink = (20,5,5)
 gold = (25, 20, 5)
@@ -50,6 +50,14 @@ def display():
         cp.pixels[i] = colors[cosmos[cell]+3]
         
 
+def checkWorld():
+    global cosmos
+    
+    for i in (cosmos):
+        if i != 0:
+            return True
+            
+    return False
 
 def doGen():
     global cosmos, c1, c2
@@ -92,5 +100,11 @@ while True:
     if cp.switch:
         doGen()
         print(cosmos)
-        time.sleep(.5)
+        time.sleep(.1)
+        
+    if checkWorld() == False:
+        cp.pixels.fill(white)
+        time.sleep(2)
+        create()
+
     time.sleep(.2)
