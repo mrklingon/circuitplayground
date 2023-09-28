@@ -2,8 +2,6 @@ from adafruit_circuitplayground import cp
 import time
 import random
 
-
-#misunderstanding of https://sci-hub.se/10.1007/BF01556771
 #Define colors
 pink = (20,5,5)
 gold = (25, 20, 5)
@@ -16,9 +14,9 @@ red = (20,0,0)
 white = (20,20,20)
 violet = (20,0,20)
 
-
 colors = [red,orange,pink,blank,green,blue,violet]
 
+Psym = ["@","o","."," ","'",":","#"]
 cosmos = []
 c1 = []
 c2 = []
@@ -43,15 +41,22 @@ def stable1():
             
 
 
-create()
-print (cosmos)
 
 def display():
     for i in range(10):
         cell = i + 40
         cp.pixels[i] = colors[cosmos[cell]+3]
         
-
+def pcosmos():
+    global cosmos
+    pic = ""
+    
+    for i in range(10,70):
+        pic = pic + Psym[3+cosmos[i]]
+        
+    print (pic)
+    
+    
 def checkWorld():
     global cosmos
     
@@ -85,23 +90,30 @@ def doGen():
     for   i in range(100):
         if (c2[i]!=0):
             cosmos[i]= c2[i]
-    
+
+create()
+pcosmos()
 while True:
     display()
     if cp.button_a:
         doGen()
-        print(cosmos)
+#       print(cosmos)
+        pcosmos()
+        
     if cp.touch_A1:
         stable1()
         display
-        print(cosmos)
+ #       print(cosmos)
+        pcosmos()
         
     if cp.button_b:
         create()
-        print(cosmos)
+        #print(cosmos)
+        pcosmos()
     if cp.switch:
         doGen()
-        print(cosmos)
+        #print(cosmos)
+        pcosmos()
         time.sleep(.1)
         
     if checkWorld() == False:
