@@ -30,9 +30,10 @@ while test > 0:
 
 cp.pixels.fill((0,0,0))
 
-if cp.switch:
-    cp.play_file("trek/proximityalert_ep.wav")
+
 while True:
+    if cp.switch:
+        cp.play_file("trek/proximityalert_ep.wav")
     ship = 0
     dir = 1
     klingon = 5
