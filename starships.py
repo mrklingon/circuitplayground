@@ -109,15 +109,14 @@ while not Done:
         cp.pixels.fill(green)
 
         compthink(2)
-        story = random.choice(ships) + "\n"
-        story = story + random.choice(travel) + "\n"
-        story = story + star + "\n"
-        story = story + random.choice(purpose) + "\n"
-        story = story + random.choice(problem) + "\n"
-        story = story + random.choice(solution) + "\n"
-        story = story + random.choice(twist).format(place=random.choice(planets), alien = random.choice(aliens)) +"\n"
+        prt(random.choice(ships) )
+        prt(random.choice(travel))
+        prt(star)
+        prt(random.choice(purpose))
+        prt(random.choice(problem) )
+        prt(random.choice(solution) )
+        prt(random.choice(twist).format(place=random.choice(planets), alien = random.choice(aliens)) )
 
-        prt (story)
         time.sleep(.25)
         cp.pixels.fill(blank)
 
