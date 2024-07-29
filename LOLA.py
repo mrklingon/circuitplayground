@@ -10,14 +10,19 @@ import random
 from adafruit_circuitplayground import cp
 from adafruit_motor import servo
 
-import morse
 
+import morse2
+
+msgs = ["hi","bye","yes","no","what"]
 
 red = (15,0,0)
 blue =(0,0,15)
 green = (0,15,0)
 blank = (0,0,0)
 eyes = [6,5,4,3,4,5,6,5,4,3]
+
+def say():
+    talk(msgs[random.randrange(len(msgs))])
 
 def compthink(cycles):
     for i in range (10*cycles):
@@ -53,9 +58,15 @@ def wave():
         compthink(1)
     else:
         time.sleep(.25)
-    
-morse.blinkcode(morse.encryption("hello"))
+
+def talk(msg):
+    print(msg)
+    morse2.blinkcode(morse2.encryption(msg))
+
+talk("hello")
 cp.pixels.fill(green)
+time.sleep(.5)
+
 if cp.switch:
     compthink(2)
 time.sleep(.25)
@@ -68,7 +79,12 @@ while True:
         val = val +2
     if cp.touch_A4:
         eye(random.randrange(5,7))
-        
+    
+    if cp.touch_A3:
+        if cp.switch:
+            compthink(1)
+        say()
+    
     if cp.touch_A7:
         for i in range(random.randrange(3,10)):
             wave()
