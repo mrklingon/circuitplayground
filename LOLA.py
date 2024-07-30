@@ -89,6 +89,34 @@ while True:
         for i in range(random.randrange(3,10)):
             wave()
             cp.pixels.fill(blank)
+    
+    AUTOMODE = False
+    
+    if cp.touch_A1:
+        AUTOMODE = True
+        compthink(1)
+        time.sleep(.1)
+        while AUTOMODE:
+            if cp.touch_A3:
+                AUTOMODE = False
+                
+                print("exit auto")
+                morse2.flash()
+                cp.pixels.fill(blank)
+            
+            if random.randrange(10) > 5:
+                say()
+            if random.randrange(10)>3:
+                wave()
+            if random.randrange(10)>2:
+                eye(1+random.randrange(3))
+            if cp.touch_A3:
+                AUTOMODE = False
+                print("exit auto")
+                morse2.flash()
+                cp.pixels.fill(blank)
+
+
     if val == 1:
         wave()
         cp.pixels.fill(blank)
